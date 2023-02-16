@@ -3,7 +3,7 @@ import numpy as np
 
 import seaborn as sns
 import matplotlib.pyplot as plt
-
+import wrangle as w
 
 from scipy import stats
 from sklearn.cluster import KMeans
@@ -112,7 +112,7 @@ def mvp_scaled_data(train, val, test, return_scaler=False):
     columns_scale = train.iloc[:, :16]
     columns_to_scale = columns_scale.columns
     
-    train, val, test= the_split(df)
+    train, val, test= w.new_split(df)
     
     # make copies of our original data so we dont gronk up anything
     train_scaled = train.copy()
@@ -414,7 +414,7 @@ def plot_model(best_mods):
                  errwidth=0, ec= 'black')
     for i in ax.containers:
         ax.bar_label(i,)
-plot_model()
+#plot_model(best_mods)
 
 
 def best_model(X_train, y_train, X_val, y_val, X_test, y_test):
